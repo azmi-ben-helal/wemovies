@@ -15,9 +15,26 @@ class MovieController extends AbstractController
      */
     public function listMovies(Request $request, MovieProvider $movieProvider)
     {
-        if($request->isXmlHttpRequest()) {
+        if ($request->isXmlHttpRequest()) {
             $id = $request->get('id');
             return new Response($this->renderView('movie/moviesList.html.twig', array( 'movies' => $movieProvider->getMoviesByGenre($id)['results'])));
+        }
+
+        return $this->render('movie/movie.html.twig',
+            [
+                'genres' => $movieProvider->getListGenre(),
+                'movies' => $movieProvider->getMoviesByGenre()['results']
+            ]);
+    }
+
+    /**
+     * @Route("/search", options={"expose"=true}, name="search")
+     */
+    public function searchMovies(Request $request, MovieProvider $movieProvider)
+    {
+        if ($request->isXmlHttpRequest()) {
+            $value = $request->get('value');
+            return new Response($this->renderView('movie/moviesList.html.twig', array( 'movies' => $movieProvider->searchMovie($value)['results'])));
         }
 
         return $this->render('movie/movie.html.twig',

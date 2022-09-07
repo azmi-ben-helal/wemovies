@@ -1,1 +1,1 @@
-{"base_url":"","routes":{"movie":{"tokens":[["text","\/movies"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":[],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http","locale":""}
+{"base_url":"","routes":{"movie":{"tokens":[["text","\/movies"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":[],"schemes":[]},"search":{"tokens":[["text","\/search"]],"defaults":[],"requirements":[],"hosttokens":[],"methods":[],"schemes":[]}},"prefix":"","host":"localhost","port":"","scheme":"http","locale":""}

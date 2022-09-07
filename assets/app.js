@@ -37,3 +37,21 @@ $(document).ready(function(){
     });
 });
 
+$(document).ready(function(){
+    $(".search").submit(function(e){
+        e.preventDefault()
+        var value = $("input[type='search']").val();
+        var url = Routing.generate('search');
+        if (value){
+            $.ajax({
+                type: 'POST',
+                url: url,
+                async : true,
+                data: { value : value } ,
+                success: function(response, data){
+                    $('.moviesList').html(response);
+                }
+            });
+        }
+    });
+});

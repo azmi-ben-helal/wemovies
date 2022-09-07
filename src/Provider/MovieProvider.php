@@ -44,4 +44,13 @@ class MovieProvider
         );
         return $response->toArray();
     }
+
+    public function searchMovie(string $value): array
+    {
+        $response = $this->httpClient->request(
+            'GET',
+            'https://api.themoviedb.org/3/search/movie?api_key='.$this->apiKey.'&page=1&query='.$value
+        );
+        return $response->toArray();
+    }
 }
