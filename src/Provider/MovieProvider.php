@@ -36,7 +36,7 @@ class MovieProvider
         return $response->toArray()['genres'];
     }
 
-    public function getMoviesByGenre(int $genreId): array
+    public function getMoviesByGenre(int $genreId = 28): array
     {
         $response = $this->httpClient->request(
             'GET',

@@ -16,13 +16,14 @@ class MovieController extends AbstractController
     public function listMovies(Request $request, MovieProvider $movieProvider)
     {
         if($request->isXmlHttpRequest()) {
-            $id = $request->request->get('id');
+            $id = $request->get('id');
+            return new Response($this->renderView('movie/moviesList.html.twig', array( 'movies' => $movieProvider->getMoviesByGenre($id)['results'])));
         }
 
         return $this->render('movie/movie.html.twig',
             [
                 'genres' => $movieProvider->getListGenre(),
-                'movies' => $movieProvider->getMoviesByGenre(28)['results']
+                'movies' => $movieProvider->getMoviesByGenre()['results']
             ]);
     }
 }
