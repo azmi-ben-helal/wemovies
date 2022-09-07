@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+{% endblock %}
+
+{% block body %}
+
+    <div class="container">
+        <div class="row">
+            <div class=col>
+                {% for genre in genres %}
+                <div class="form-check" >
+                        <input class="form-check-input test" type="radio" value="{{ genre.id }}"  name="flexRadioDefault" id="flexRadioDefault{{ genre.id }}"  >
+                        <label class="form-check-label" for ="flexRadioDefault{{ genre.id }}" >
+                            {{genre.name}}
+                        </label>
+                </div>
+                {% endfor %}
+            </div>
+            <div class=col>
+            {% for movie in movies %}
+            <div class="card mb-3" style="max-width: 540px;">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img class="card-img-top" src="https://image.tmdb.org/t/p/original/{{ movie.poster_path }}" height="200"
+                             alt="Card image cap">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ movie.original_title }}</h5>
+                            <p class="card-text">{{ movie.overview }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        </div>
+    </div>
+{% endblock %}
